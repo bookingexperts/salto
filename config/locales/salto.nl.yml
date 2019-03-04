@@ -1,0 +1,16 @@
+nl:
+  salto:
+    errors:
+      ES: Syntax error. Het van het PMS ontvangen bericht is incorrect (ongeldig commando, ongeldige parameters, niet toegestane karakters, etc.)
+      NC: Geen communicatie. De opgegeven encoder reageert niet (encoder is uitgeschakeld, niet verbonden met de PC interface, etc.)
+      NF: Geen bestanden. Het database bestand in de PC interface is beschadigd, corrupt of niet gevonden.
+      OV: Teveel requests. De encoder is nog bezig om een andere opdracht uit te voeren en kan momenteel geen nieuwe opdrachten accepteren.
+      EP: Kaartfout. Kaart kon niet gevonden worden of is verkeerd ingevoerd in de encoder.
+      EF: Ongeldig format. De kaart is door een ander systeem geschreven of is beschadigd.
+      TD: Onbekende kamer. Deze fout treedt op als een kaart wordt geschreven voor een niet bestaande kamer.
+      ED: Timeout. De encoder heeft te lang gewacht op invoer van een kaart. De opdracht is geannuleerd.
+      EA: "Deze fout treedt op als de PC interface het 'CC' commando (schrijf kopieën van een gastkaart) niet kan uitvoeren omdat de kamer is uitgecheckt."
+      OS: Deze fout treedt op als de betreffende kamer in onderhoud is.
+      EO: De betreffende gastkaart wordt momenteel geschreven door een ander systeem.
+      EV: "Ongeldige kaart. Deze fout treedt op als de ingevoerde kaart voor een 'CN', 'CC' or 'CA' commando bij een geldige medewerker hoort."
+      EG: Generieke fout
