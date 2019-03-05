@@ -21,7 +21,7 @@ module Salto
 
         audit_records
       ensure
-        tcp_connection.close
+        tcp_connection&.close
       end
     end
   end

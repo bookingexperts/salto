@@ -42,7 +42,7 @@ module Salto
       tcp_connection = connection
       _send_request(tcp_connection, request)
     ensure
-      tcp_connection.close
+      tcp_connection&.close
     end
 
     def send_message(message)
