@@ -1,5 +1,4 @@
 require 'minitest/autorun'
-require 'minitest/stub_any_instance'
 require 'salto'
 
 def tcp_client_mock(write:, read:)
