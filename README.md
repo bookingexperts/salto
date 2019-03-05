@@ -1,8 +1,6 @@
 # Salto
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/salto`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+A ruby Salto client implementing the PMS Industry Standard protocol via TCP/IP.
 
 ## Installation
 
@@ -22,7 +20,42 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+```ruby
+# Initialize client
+client = Salto::Client.new('192.168.1.1:8090')
+
+# Send ENQ
+client.ready?
+
+# Encode card
+message = Salto::Messages::EncodeCard.new(valid_from: Time.now, valid_till: 2.days.from_now, rooms: ['Room 1'], print_info: 'john', encoder: 'Online Encoder 1')
+response = client.send_message(message)
+response.message?
+response.message
+
+# Encode mobile
+message = Salto::Messages::EncodeMobile.new(valid_from: Time.now, valid_till: 2.days.from_now, rooms: ['Room 1'], phone_number: '0612345678', text_message: 'Please enter')
+response = client.send_message(message)
+
+# Read card
+lt_message = Salto::Messages::ReadCard.new(encoder: 'Online Encoder 1')
+response = client.send_message(lt_message)
+card_details = Salto::Support::CardDetails.new(response.message)
+card_details.guest_card?
+
+# Write track
+p1_message = Salto::Messages::WriteTrack.new(track: 1, encoder: 'Online Encoder 1', text: 'JOHN DOE')
+response = client.send_message(p1_message)
+
+# Read track
+l1_message = Salto::Messages::ReadTrack.new(track: 1, encoder: 'Online Encoder 1')
+response = client.send_message(l1_message)
+track1_text = response.message.fields[2]
+
+# Audit trails
+audit_trail = Salto::Audit::AuditTrail.fetch(client, door_identification: 'Entrance')
+audit_trail.map(&:datetime)
+```
 
 ## Development
 

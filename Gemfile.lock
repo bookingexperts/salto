@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    salto (0.1.0)
+    salto (0.0.1)
       activesupport
       i18n
       tcp-client (~> 0.0.9)
