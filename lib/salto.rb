@@ -1,3 +1,4 @@
+require 'i18n'
 require 'time'
 
 require 'active_support'
@@ -26,5 +27,5 @@ require 'salto/support/card_details'
 require 'salto/version'
 
 module Salto
-  I18n.load_path << Dir[File.expand_path('config/locales') + '/*.yml']
+  I18n.load_path += Dir[File.expand_path('../config/locales', __dir__) + '/*.yml']
 end
