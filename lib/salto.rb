@@ -21,6 +21,7 @@ require 'salto/messages/one_shot_card'
 require 'salto/messages/read_card'
 require 'salto/messages/read_track'
 require 'salto/messages/write_track'
+require 'salto/messages/checkout'
 
 require 'salto/support/card_details'
 

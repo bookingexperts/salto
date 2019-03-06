@@ -22,7 +22,7 @@ Or install it yourself as:
 
 ```ruby
 # Initialize client
-client = Salto::Client.new('192.168.1.1:8090')
+client = Salto::Client.new('192.168.1.1:8090', logger: Logger.new(STDOUT))
 
 # Send ENQ
 client.ready?
@@ -52,7 +52,11 @@ l1_message = Salto::Messages::ReadTrack.new(track: 1, encoder: 'Online Encoder 1
 response = client.send_message(l1_message)
 track1_text = response.message.fields[2]
 
-# Audit trails
+# Checkout
+mc_message = Salto::Messages::Checkout.new(room: 'Room 1')
+response = client.send_message(mc_message)
+
+# Audit trail
 audit_trail = Salto::Audit::AuditTrail.fetch(client, door_identification: 'Entrance')
 audit_trail.map(&:datetime)
 ```

@@ -128,7 +128,7 @@ module Salto
 
       message = message.dup.force_encoding(ENCODING)
       message.gsub!(STX, 'STX ')
-      message.gsub!(ETX, ' ETX')
+      message.gsub!(ETX, ' ETX ')
       message.gsub!(ENQ, 'ENQ')
       message.gsub!(ACK, 'ACK')
       message.gsub!(NAK, 'NAK')
