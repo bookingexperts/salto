@@ -19,7 +19,7 @@ module Salto
     end
 
     def self.sanitize_text(text)
-      text.gsub(FIELD_DELIMITER, '|')
+      text.gsub("\r", '').gsub(FIELD_DELIMITER, '|')
     end
 
     def command

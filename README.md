@@ -53,8 +53,8 @@ response = client.send_message(l1_message)
 track1_text = response.message.fields[2]
 
 # Checkout
-mc_message = Salto::Messages::Checkout.new(room: 'Room 1')
-response = client.send_message(mc_message)
+co_message = Salto::Messages::Checkout.new(room: 'Room 1')
+response = client.send_message(co_message)
 
 # Audit trail
 audit_trail = Salto::Audit::AuditTrail.fetch(client, door_identification: 'Entrance')

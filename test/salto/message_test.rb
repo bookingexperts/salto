@@ -23,6 +23,10 @@ module Salto
       assert_equal '|CN|Online Encoder 1|R|Room 1|', Salto::Message.sanitize_text(text)
     end
 
+    it 'removes carriage returns when sanitizing strings' do
+      assert_equal 'JOHN DOE|ANONYMOUSVILLE', Salto::Message.sanitize_text("JOHN DOE\r|ANONYMOUSVILLE\r")
+    end
+
     it 'assumes command name to be in the first field' do
       message = Salto::Message.encode('|CN|Online Encoder 1|R|Room 1|')
       assert_equal 'CN', message.command
