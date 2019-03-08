@@ -79,7 +79,7 @@ module Salto
       end
 
       def granted_authorizations
-        Salto::Support::CardDetails.decode_authorizations(message.fields[8]) if guest_card?
+        Salto::Support::CardDetails.decode_authorizations(message.fields[8]) if guest_card? && message.fields[8].present?
       end
 
       def valid_from
