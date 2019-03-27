@@ -3,6 +3,7 @@ require 'time'
 
 require 'active_support'
 require 'active_support/core_ext/object/blank'
+require 'active_support/core_ext/time'
 
 require 'tcp-client'
 

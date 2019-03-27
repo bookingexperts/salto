@@ -31,7 +31,12 @@ module Salto
       end
 
       def datetime
-        Time.strptime("#{message.fields[2]} #{message.fields[3]}", DATETIME_FORMAT)
+        @datetime ||=
+          begin
+            parsed_datetime = Time.strptime("#{message.fields[2]} #{message.fields[3]}", DATETIME_FORMAT)
+            parsed_datetime = parsed_datetime.change(year: parsed_datetime.year - 1) if parsed_datetime > Time.now
+            parsed_datetime
+          end
       end
 
       def incident

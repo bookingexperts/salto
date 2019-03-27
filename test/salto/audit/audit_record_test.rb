@@ -10,7 +10,7 @@ module Salto
         refute record.error?
         refute record.end_of_trail?
         assert_equal 'Entrance', record.door_identification
-        assert_equal Time.strptime('01/10 14:05', Salto::Audit::AuditRecord::DATETIME_FORMAT), record.datetime
+        assert_equal Time.parse("#{record.datetime.year}/10/01 14:05"), record.datetime
         assert_equal :open, record.incident
         assert_equal :in, record.direction
         assert_equal '101', record.card_identification
@@ -23,12 +23,19 @@ module Salto
         refute record.error?
         refute record.end_of_trail?
         assert_equal 'Entrance', record.door_identification
-        assert_equal Time.strptime('01/10 14:05', Salto::Audit::AuditRecord::DATETIME_FORMAT), record.datetime
+        assert_equal Time.parse("#{record.datetime.year}/10/01 14:05"), record.datetime
         assert_equal :open, record.incident
         assert_equal :in, record.direction
         assert_equal 'STAFF', record.card_identification
         assert_equal '#0', record.copy_number
         assert_equal 'Maintenance', record.user
+      end
+
+      it 'sets the datetime to the passed year when a day-month combination is not for the current year' do
+        future_date = Time.now + 86_400
+        message = Salto::Message.new(['WF', 'Entrance', "#{future_date.day}/#{future_date.month}", '14:05', '0', 'I', 'STAFF   ', '#0', 'Maintenance'])
+        record = Salto::Audit::AuditRecord.new(message)
+        assert_equal Time.now.year - 1, record.datetime.year
       end
 
       it 'yields an incident' do
