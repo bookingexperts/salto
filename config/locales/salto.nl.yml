@@ -1,4 +1,8 @@
 nl:
+  i18n:
+    transliterate:
+      rule:
+        "\xB3": "|"
   salto:
     errors:
       ES: Syntax error. Het van het PMS ontvangen bericht is incorrect (ongeldig commando, ongeldige parameters, niet toegestane karakters, etc.)

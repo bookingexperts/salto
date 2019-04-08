@@ -13,7 +13,7 @@ module Salto
             rooms: ['Room 1', 'Room 2', 'Room 3', 'Room 4'],
             granted_authorizations: [1, 2, 3, 4, 5],
             denied_authorizations: [62, 61, 60, 59, 58],
-            print_info: "John Doe\nAnonymousVille\nGuest",
+            print_info: "John Doé\nAnonymousVille\nGuest",
             operator: 'Operator',
             encoder: 'Encoder 1',
             eject_strategy: :retain,

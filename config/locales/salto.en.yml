@@ -1,4 +1,8 @@
 en:
+  i18n:
+    transliterate:
+      rule:
+        "\xB3": "|"
   salto:
     errors:
       ES: Syntax error. The received message from the PMS is not correct (unknown command, nonsense parameters, prohibited characters, etc.)
