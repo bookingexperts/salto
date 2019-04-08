@@ -4,6 +4,7 @@ require 'time'
 require 'active_support'
 require 'active_support/core_ext/object/blank'
 require 'active_support/core_ext/time'
+require 'active_support/inflector/transliterate'
 
 require 'tcp-client'
 

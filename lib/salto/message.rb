@@ -19,7 +19,7 @@ module Salto
     end
 
     def self.sanitize_text(text)
-      text.gsub("\r", '').gsub(FIELD_DELIMITER, '|')
+      ActiveSupport::Inflector.transliterate(text, '').encode(Salto::Client::ENCODING, invalid: :replace, undef: :replace, replace: '').delete("\r")
     end
 
     def command
