@@ -27,6 +27,7 @@ blocks:
           - bundle config --local path 'vendor/bundle'
           - bundle config --local github.https 'true'
           - bundle install
+          - cache store
       jobs:
         - name: Tests
           commands:
