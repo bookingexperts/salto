@@ -19,7 +19,7 @@ module Salto
     end
 
     def self.sanitize_text(text)
-      ActiveSupport::Inflector.transliterate(text, '').encode(Salto::Client::ENCODING, invalid: :replace, undef: :replace, replace: '').delete("\r")
+      ActiveSupport::Inflector.transliterate(text.force_encoding('utf-8'), '').encode(Salto::Client::ENCODING, invalid: :replace, undef: :replace, replace: '').delete("\r")
     end
 
     def command
