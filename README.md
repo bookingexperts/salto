@@ -37,6 +37,12 @@ response.message
 message = Salto::Messages::EncodeMobile.new(valid_from: Time.now, valid_till: 2.days.from_now, rooms: ['Room 1'], phone_number: '0612345678', text_message: 'Please enter')
 response = client.send_message(message)
 
+# Encode mobile binary
+message = Salto::Messages::EncodeMobileBinary.new(valid_from: Time.now, valid_till: 2.days.from_now, rooms: ['Room 1'], phone_number: '0612345678', return_installation_id: true)
+response = client.send_message(message)
+binary_mobile_key = Salto::Support::BinaryMobileKey.new(response.message)
+binary_mobile_key.key
+
 # Read card
 lt_message = Salto::Messages::ReadCard.new(encoder: 'Online Encoder 1')
 response = client.send_message(lt_message)
