@@ -1,0 +1,34 @@
+version: v1.0
+name: Test salto gem
+agent:
+  machine:
+    type: e1-standard-2
+    os_image: ubuntu1804
+
+global_job_config:
+  env_vars:
+    - name: TZ
+      value: 'Europe/Amsterdam'
+
+auto_cancel:
+  running:
+    when: true
+
+blocks:
+  - name: Tests
+    execution_time_limit:
+      minutes: 15
+    task:
+      prologue:
+        commands:
+          - checkout
+          - sem-version ruby 2.6.3
+          - cache restore
+          - bundle config --local path 'vendor/bundle'
+          - bundle config --local github.https 'true'
+          - bundle install
+          - cache store
+      jobs:
+        - name: Tests
+          commands:
+            - bundle exec rake test

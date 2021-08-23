@@ -17,14 +17,17 @@ require 'salto/audit/audit_trail'
 
 require 'salto/messages/encode_card'
 require 'salto/messages/encode_mobile'
+require 'salto/messages/encode_mobile_binary'
 require 'salto/messages/copy_card'
 require 'salto/messages/copy_mobile'
+require 'salto/messages/copy_mobile_binary'
 require 'salto/messages/one_shot_card'
 require 'salto/messages/read_card'
 require 'salto/messages/read_track'
 require 'salto/messages/write_track'
 require 'salto/messages/checkout'
 
+require 'salto/support/binary_mobile_key'
 require 'salto/support/card_details'
 
 require 'salto/version'
