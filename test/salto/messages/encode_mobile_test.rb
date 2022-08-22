@@ -9,7 +9,7 @@ module Salto
         message =
           Salto::Messages::EncodeMobile.new(
             phone_number: '0612345678',
-            text_message: "John Doe\nAnonymousVille\nGuest",
+            text_message: "Jonä Doe\nAnonymousVille\nGuest",
             valid_from: now,
             valid_till: now + (3600 * 24),
             rooms: ['Room 1', 'Room 2', 'Room 3', 'Room 4'],
@@ -22,7 +22,8 @@ module Salto
         valid_from = now.strftime(Salto::Support::CardDetails::DATETIME_FORMAT)
         valid_till = (now + (3600 * 24)).strftime(Salto::Support::CardDetails::DATETIME_FORMAT)
 
-        assert_equal ['CNM', '0612345678', 'Room 1', 'Room 2', 'Room 3', 'Room 4', '12345', '}{_^]', valid_from, valid_till, 'Operator', nil, nil, nil, "John Doe\nAnonymousVille\nGuest"], message.fields
+        assert_equal ['CNM', '0612345678', 'Room 1', 'Room 2', 'Room 3', 'Room 4', '12345', '}{_^]', valid_from, valid_till, 'Operator', nil, nil, nil, "Jona Doe\nAnonymousVille\nGuest"], message.fields
+        refute_nil message.to_s
       end
     end
   end
