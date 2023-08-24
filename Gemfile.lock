@@ -9,15 +9,14 @@ PATH
 GEM
   remote: https://rubygems.org/
   specs:
-    activesupport (6.1.4.1)
+    activesupport (7.0.7.2)
       concurrent-ruby (~> 1.0, >= 1.0.2)
       i18n (>= 1.6, < 2)
       minitest (>= 5.1)
       tzinfo (~> 2.0)
-      zeitwerk (~> 2.3)
     ast (2.4.0)
-    concurrent-ruby (1.1.9)
-    i18n (1.8.10)
+    concurrent-ruby (1.2.2)
+    i18n (1.14.1)
       concurrent-ruby (~> 1.0)
     jaro_winkler (1.5.2)
     m (1.5.1)
@@ -43,10 +42,9 @@ GEM
       unicode-display_width (~> 1.4.0)
     ruby-progressbar (1.10.0)
     tcp-client (0.0.11)
-    tzinfo (2.0.4)
+    tzinfo (2.0.6)
       concurrent-ruby (~> 1.0)
     unicode-display_width (1.4.1)
-    zeitwerk (2.4.2)
 
 PLATFORMS
   ruby
