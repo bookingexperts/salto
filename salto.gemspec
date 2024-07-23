@@ -22,11 +22,11 @@ Gem::Specification.new do |spec|
 
   spec.add_dependency 'activesupport'
   spec.add_dependency 'i18n'
-  spec.add_dependency 'tcp-client', '~> 0.0.9'
+  spec.add_dependency 'tcp-client', '~> 0.0.11'
 
-  spec.add_development_dependency 'bundler', '~> 2.0'
+  spec.add_development_dependency 'bundler', '~> 2.5.13'
   spec.add_development_dependency 'm'
-  spec.add_development_dependency 'minitest', '~> 5.11'
-  spec.add_development_dependency 'rake', '~> 13.0'
-  spec.add_development_dependency 'rubocop', '~> 0.65'
+  spec.add_development_dependency 'minitest', '~> 5.24.1'
+  spec.add_development_dependency 'rake', '~> 13.2.1'
+  spec.add_development_dependency 'rubocop', '~> 1.65.0'
 end
