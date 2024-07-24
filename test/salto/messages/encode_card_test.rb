@@ -67,6 +67,30 @@ module Salto
 
         assert_equal ['CN', 'Encoder 1', 'R', 'Room 1', 'Room 2', 'Room 3', 'Room 4', '12345', '}{_^]', valid_from, valid_till, 'Operator', 'John Doe', 'AnonymousVille', 'Guest', '2', '11A5C4D8,ABCD1234'], message.fields
       end
+
+      it 'builds an encode card command with a maximum of 64 characters of authorisation codes`' do
+        now = Time.now
+
+        message =
+          Salto::Messages::EncodeCard.new(
+            valid_from: now,
+            valid_till: now + (3600 * 24),
+            rooms: ['Room 1', 'Room 2', 'Room 3', 'Room 4'],
+            granted_authorizations: [1, 2, 3, 4, 5],
+            denied_authorizations: [62, 61, 60, 59, 58],
+            print_info: "John Doé\nAnonymousVille\nGuest",
+            operator: 'Operator',
+            encoder: 'Encoder 1',
+            eject_strategy: :retain,
+            serial_number_return: :all,
+            authorisation_codes: %w[11A5C4D8 ABCD1234 QWER5678 ASDF432 1234ASDF 5678QWER GH34JIF 1A2S3D4F]
+          )
+
+        valid_from = now.strftime(Salto::Support::CardDetails::DATETIME_FORMAT)
+        valid_till = (now + (3600 * 24)).strftime(Salto::Support::CardDetails::DATETIME_FORMAT)
+
+        assert_equal '11A5C4D8,ABCD1234,QWER5678,ASDF432,1234ASDF,5678QWER,GH34JIF,1A2', message.fields[16]
+      end
     end
   end
 end

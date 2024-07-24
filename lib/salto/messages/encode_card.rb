@@ -28,7 +28,7 @@ module Salto
 
         print_info.to_s.split("\n")[0, 3].each_with_index { |line, index| fields[12 + index] = Salto::Message.sanitize_text(line) } if print_info.present?
         fields[15] = SERIAL_NUMBER_RETURNS[serial_number_return] || serial_number_return
-        authorisation_codes.any? && fields[16] = authorisation_codes.join(',')
+        authorisation_codes.any? && fields[16] = authorisation_codes.join(',')[0, 64]
         super(fields)
       end
     end
