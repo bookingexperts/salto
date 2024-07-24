@@ -12,8 +12,8 @@ module Salto
         'CN'
       end
 
-      def initialize(amount: nil, valid_from: nil, valid_till: nil, rooms: [], granted_authorizations: [], denied_authorizations: [], print_info: nil, operator: nil, encoder:, eject_strategy: :retain, serial_number_return: :all)
-        fields = Array.new(15)
+      def initialize(amount: nil, valid_from: nil, valid_till: nil, rooms: [], granted_authorizations: [], denied_authorizations: [], print_info: nil, operator: nil, encoder:, eject_strategy: :retain, serial_number_return: :all, authorisation_codes: [])
+        fields = []
         fields[0] = "#{self.class.command_name}#{amount}"
         fields[1] = encoder
         fields[2] = Salto::Support::CardDetails::EJECT_STRATEGIES[eject_strategy] || eject_strategy
@@ -28,7 +28,7 @@ module Salto
 
         print_info.to_s.split("\n")[0, 3].each_with_index { |line, index| fields[12 + index] = Salto::Message.sanitize_text(line) } if print_info.present?
         fields[15] = SERIAL_NUMBER_RETURNS[serial_number_return] || serial_number_return
-
+        authorisation_codes.any? && fields[16] = authorisation_codes.join(',')[0, 64]
         super(fields)
       end
     end
